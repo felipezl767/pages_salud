@@ -6,24 +6,15 @@ body {
     padding: 0;
 }
 
-/* 🏥 Logo en la parte superior izquierda */
-.logo {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-}
-
-.logo img {
-    width: 80px;
-    height: auto;
-}
-
 /* 🔹 Encabezado */
 header {
     background-color: #0077b6;
     color: white;
     padding: 1.5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* 🔹 Menú de navegación */
@@ -32,13 +23,14 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.5rem;
     transition: background 0.3s ease;
 }
@@ -48,35 +40,28 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* 🏥 Secciones */
-main {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
+/* 📱 Diseño responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* 🔹 Ajuste del ancho de las secciones */
+/* 🏥 Secciones */
 .contenido {
     display: none;
     padding: 2rem;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    max-width: 800px; /* Aumenté el ancho máximo */
-    width: 90%; /* Permite que se expanda más en pantallas grandes */
+    max-width: 800px;
+    width: 90%;
     margin: auto;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
-/* 📱 Diseño responsive para pantallas pequeñas */
-@media (max-width: 900px) {
-    .contenido {
-        width: 95%; /* Más ancho en móviles */
-        max-width: 100%;
-    }
-}
-
 
 .contenido.activo {
     display: block;
@@ -84,173 +69,19 @@ main {
     transform: translateY(0);
 }
 
-/* 🖼 Contenedor de imágenes */
-.contenedor-imagen {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px; /* Espaciado debajo de la imagen */
-}
-
-
-
-/* 🔹 Imágenes con transición */
-.image-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-/* 🔹 Imagen activa */
-.image-container img.imagen-activa {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.image-container img:not(.imagen-activa) {
-    transform: scale(1.1);
-}
-
-/* 📄 Sección de texto */
-.texto-info {
-    width: 50%;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.texto-info h2 {
-    color: #0077b6;
-    margin-bottom: 0.5rem;
-}
-
-/* 🎭 Diseño flexible para imagen y texto */
-.contenido-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* 📱 Diseño responsive */
-@media (max-width: 900px) {
-    .contenido-flex {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .image-container,
-    .texto-info {
-        width: 100%;
-    }
-
-    .texto-info h2 {
-        text-align: center;
-    }
-}
-
-/* 🎨 Separadores */
-.separador, .separador-titulo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0;
-    opacity: 0;
-    transform: scale(0.8);
-    animation: aparecer 0.8s ease-out forwards;
-}
-
-/* 🔹 Línea decorativa */
-.separador .linea, .separador-titulo .linea {
-    width: 60%;
-    height: 3px;
-    background: linear-gradient(to right, #0077b6, #48cae4);
-    border-radius: 5px;
-}
-
-/* 🔹 Icono decorativo */
-.separador .icono, .separador-titulo .icono {
-    font-size: 1.5rem;
-    margin-right: 10px;
-    color: #0077b6;
-}
-
-/* 📌 Animación de aparición */
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* 🔹 Línea separadora animada */
-.linea-separadora {
-    width: 0%;
-    height: 5px;
-    background: linear-gradient(to right, #9fa8ac, #48cae4);
-    margin: 1.5rem auto;
-    border-radius: 5px;
-    animation: expandir 1s ease-out forwards;
-}
-
-/* 📌 Animación de expansión */
-@keyframes expandir {
-    from {
-        width: 0%;
-    }
-    to {
-        width: 80%;
-    }
-}
-
-.texto-imagen-container {
-    display: flex;
-    align-items: center; /* Alinea el texto con las imágenes */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    gap: 10 px; /* Espaciado entre imágenes y texto */
-    flex-wrap: wrap; /* Evita desbordamiento en pantallas pequeñas */
-}
-
-.texto-imagen-container .imagen {
-    width: 90%; /* Ajusta el tamaño de las imágenes */
-    max-width: 400px; /* Evita que sean demasiado grandes */
-    border-radius: 50px;
-    align-items: center; /* Alinea el texto con las imágenes */
-}
-
-.texto-imagen-container .texto {
-    width: 10%; /* Tamaño del texto en relación con las imágenes */
-    text-align: justify;
-    font-size: 18px;
-}
-
-.contenedor {
-    display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
-    height: 100px; /* Ajusta la altura según lo necesites */
-}
-
-/* Centrar la imagen */
+/* 📱 Ajuste de imágenes en móviles */
 .imagen-centro {
     display: block;
-    margin: 20px auto; /* Centrado horizontal con margen */
-    max-width: 40%; /* Ajustar tamaño para que no sea demasiado grande */
+    margin: 20px auto;
+    max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
-/* Justificar el texto */
-.contenido p, .contenido ul, .texto-info {
+/* 📱 Ajuste del contenedor en móviles */
+.texto-imagen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: justify;
 }
